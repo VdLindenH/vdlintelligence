@@ -64,6 +64,7 @@
     letter-spacing: -0.01em;
     text-wrap: balance;
   }
+  .ondertitel { margin: 0; font-size: 1.25rem; font-weight: 600; color: var(--accent); }
   .intro { margin: 0; max-width: 60ch; color: var(--muted); }
 
   .flow {
@@ -80,6 +81,7 @@
     letter-spacing: 0.08em;
     color: var(--muted);
   }
+  h2 .klein { text-transform: none; }
   .tags {
     list-style: none; margin: 0; padding: 0;
     display: flex; flex-wrap: wrap; gap: 0.5rem;
@@ -137,14 +139,15 @@
 
   <header class="kop">
     <h1>Senior Data Engineer</h1>
-    <p class="intro">Zeer ruime ervaring, opgedaan tijdens succesvolle opdrachten, veelal bij bekende grote bedrijven.</p>
+    <p class="ondertitel">Van inzicht naar resultaat</p>
+    <p class="intro">Ruime ervaring in dataontwikkeling, opgedaan in uiteenlopende opdrachten. Met een praktische aanpak vertaal ik complexe vraagstukken naar betrouwbare oplossingen die werken.</p>
     <div class="flow" aria-label="Extract, transform, load">
       <span>extract</span><span aria-hidden="true">→</span><span>transform</span><span aria-hidden="true">→</span><span>load</span>
     </div>
   </header>
 
   <section aria-labelledby="kennis">
-    <h2 id="kennis">Specialisaties, kennis en technieken</h2>
+    <h2 id="kennis">Skills <span class="klein">o.a.</span></h2>
     <ul class="tags">
       <li>SQL</li>
       <li>Python</li>
