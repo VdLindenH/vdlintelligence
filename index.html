@@ -1,186 +1,80 @@
 <!doctype html>
-<html lang="nl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VDLIntelligence</title>
 <meta name="description" content="VDLIntelligence: Senior Data Engineer. SQL, Python, API-data-extractie, Informatica PowerCenter, Azure, dbt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
 <style>
-  /* Layout: één smalle, links uitgelijnde kolom op een rustig vlak; een visitekaartje, geen landingspagina. */
-  :root {
-    --bg: #f4f6f7;
-    --surface: #ffffff;
-    --ink: #172430;
-    --muted: #5a6873;
-    --line: #d9e0e4;
-    --accent: #1d6670;
-    --tag-bg: #e8f0f1;
-    --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-    --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  /* Layout: twee groepen los op een foto (CC0, Daderot, Wikimedia Commons); rol linksboven, apps en contact rechtsonder. */
+  :root { --ink:#ffffff; --zacht:rgba(255,255,255,.82); --accent:#8fe0e6; --lijn:rgba(255,255,255,.28);
+    --tag:rgba(255,255,255,.16); --waas1:rgba(6,18,26,.3); --waas2:rgba(6,18,26,.12); --glas:transparent;
+    --kop:"Space Grotesk","IBM Plex Sans","Segoe UI",system-ui,sans-serif; --sans:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; color:var(--ink); font-family:var(--sans); font-size:1.0625rem; line-height:1.6;
+    background:#0d1a21; text-shadow: 0 1px 12px rgba(0,0,0,.45); }
+  /* Foto in een vaste laag: background-attachment: fixed werkt niet op de iPhone. */
+  body::before { content:""; position:fixed; inset:0; z-index:-1;
+    background: radial-gradient(ellipse at 0% 0%, var(--waas1), transparent 60%), radial-gradient(ellipse at 100% 100%, var(--waas1), transparent 60%),
+      linear-gradient(var(--waas2),var(--waas2)), url("img/achtergrond.webp") center / cover no-repeat, #0d1a21; }
+  .pagina { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr;
+    gap:2.5rem; padding-block:clamp(28px,6vh,72px); padding-inline:max(20px,5vw); }
+  .rol { grid-column:1; grid-row:1; align-self:start; max-width:34rem; }
+  .apps { grid-column:2; grid-row:1; align-self:end; justify-self:end; max-width:30rem; width:100%; }
+  .groep { display:grid; gap:.9rem; align-content:start; padding:0; border-radius:16px; background:var(--glas);
+     }
+  .merk { font-family:var(--mono); font-size:.875rem; letter-spacing:.06em; color:var(--accent); }
+  h1 { margin:0; font-family:var(--kop); font-weight:700; font-size:clamp(2.4rem,5.5vw,4.25rem); line-height:1.02; letter-spacing:-.02em; text-wrap:balance; }
+  .ondertitel { margin:0; font-family:var(--kop); font-weight:500; font-size:clamp(1.25rem,2.2vw,1.6rem); color:var(--accent); }
+  .intro { margin:0; max-width:52ch; color:var(--zacht); }
+  .flow { display:flex; gap:.5rem; font-family:var(--mono); font-size:.8125rem; color:var(--zacht); }
+  .flow span[aria-hidden] { opacity:.5; }
+  h2 { margin:1rem 0 0; font-family:var(--mono); font-weight:500; font-size:.8125rem; text-transform:uppercase; letter-spacing:.12em; color:var(--zacht); }
+  h2 .klein { text-transform:none; }
+  .tags { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:.5rem; }
+  .tags li { font-family:var(--mono); font-size:.9375rem; padding:.3rem .75rem; border-radius:999px; background:var(--tag); border:1px solid var(--lijn); text-shadow:none;
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
+  .noot { margin:0; font-size:.9375rem; color:var(--zacht); }
+  .applijst { list-style:none; margin:0; padding:0; display:grid; }
+  .applijst a { display:grid; grid-template-columns:1fr auto; gap:0 1rem; padding:.8rem 0; border-top:1px solid var(--lijn); color:inherit; text-decoration:none; }
+  .applijst li:last-child a { border-bottom:1px solid var(--lijn); }
+  .app-naam { font-family:var(--kop); font-weight:600; font-size:1.2rem; }
+  .app-wat { grid-column:1; color:var(--zacht); font-size:.9375rem; }
+  .app-url { grid-column:2; grid-row:1 / span 2; align-self:center; font-family:var(--mono); font-size:.875rem; color:var(--accent); }
+  .applijst a:hover .app-naam { text-decoration:underline; }
+  .mail { font-family:var(--mono); color:var(--accent); text-decoration:none; overflow-wrap:anywhere; }
+  .mail:hover { text-decoration:underline; }
+  a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:2px; }
+  footer { margin-top:1rem; font-family:var(--mono); font-size:.75rem; color:var(--zacht); }
+  .fotobron a { color:inherit; }
+  @media (max-width: 860px) {
+    .pagina { grid-template-columns:1fr; grid-template-rows:auto; }
+    .rol, .apps { grid-column:1; grid-row:auto; justify-self:stretch; max-width:none; }
+    .app-url { grid-column:1; grid-row:auto; }
+    :root { --waas2:rgba(6,18,26,.38); }
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #11181e; --surface: #182229; --ink: #e6ecef; --muted: #9aa8b2;
-      --line: #2a3742; --accent: #6cc3cc; --tag-bg: #1f3036; color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #11181e; --surface: #182229; --ink: #e6ecef; --muted: #9aa8b2;
-    --line: #2a3742; --accent: #6cc3cc; --tag-bg: #1f3036; color-scheme: dark;
-  }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    padding-inline: 16px;
-    padding-block: clamp(32px, 9vh, 96px);
-  }
-  .kaart {
-    max-width: 36rem;
-    margin-inline: auto;
-    display: grid;
-    gap: 2.5rem;
-  }
-  .merk {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: var(--accent);
-  }
-  .kop { display: grid; gap: 0.75rem; }
-  h1 {
-    margin: 0;
-    font-size: clamp(2rem, 6vw, 2.75rem);
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    text-wrap: balance;
-  }
-  .ondertitel { margin: 0; font-size: 1.25rem; font-weight: 600; color: var(--accent); }
-  .intro { margin: 0; max-width: 60ch; color: var(--muted); }
-
-  .flow {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
-    font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted);
-  }
-  .flow span[aria-hidden] { color: var(--line); }
-
-  h2 {
-    margin: 0 0 0.875rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-  }
-  h2 .klein { text-transform: none; }
-  .tags {
-    list-style: none; margin: 0; padding: 0;
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-  }
-  .tags li {
-    font-family: var(--font-mono);
-    font-size: 0.9375rem;
-    padding: 0.3rem 0.7rem;
-    border-radius: 4px;
-    background: var(--tag-bg);
-    color: var(--ink);
-  }
-  .noot { margin: 0.75rem 0 0; font-size: 0.9375rem; color: var(--muted); }
-
-  .apps {
-    padding-top: 1.75rem;
-    border-top: 1px solid var(--line);
-  }
-  .app {
-    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
-    gap: 0.25rem 1rem;
-  }
-  .app-naam { font-weight: 600; }
-  .app-wat { color: var(--muted); }
-  .app a {
-    color: var(--accent);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 0.9375rem;
-  }
-  .app a:hover { text-decoration: underline; }
-  .app a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-
-  .mail {
-    color: var(--accent);
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    text-decoration: none;
-    overflow-wrap: anywhere;
-  }
-  .mail:hover { text-decoration: underline; }
-  .mail:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-
-  footer {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-  }
-</style>
-</head>
-<body>
-<main class="kaart">
-  <div class="merk">VDLIntelligence</div>
-
-  <header class="kop">
+</style></head><body><main class="pagina">
+  <section class="groep rol">
+    <div class="merk">VDLIntelligence</div>
     <h1>Senior Data Engineer</h1>
     <p class="ondertitel">Van inzicht naar resultaat</p>
     <p class="intro">Ruime ervaring in dataontwikkeling, opgedaan in uiteenlopende opdrachten. Met een praktische aanpak vertaal ik complexe vraagstukken naar betrouwbare oplossingen die werken.</p>
-    <div class="flow" aria-label="Extract, transform, load">
-      <span>extract</span><span aria-hidden="true">→</span><span>transform</span><span aria-hidden="true">→</span><span>load</span>
-    </div>
-  </header>
-
-  <section aria-labelledby="kennis">
-    <h2 id="kennis">Skills <span class="klein">o.a.</span></h2>
-    <ul class="tags">
-      <li>SQL</li>
-      <li>Python</li>
-      <li>API-data-extractie</li>
-      <li>Informatica PowerCenter</li>
-      <li>Azure</li>
-      <li>dbt</li>
-    </ul>
+    <div class="flow" aria-label="Extract, transform, load"><span>extract</span><span aria-hidden="true">→</span><span>transform</span><span aria-hidden="true">→</span><span>load</span></div>
+    <h2>Skills <span class="klein">o.a.</span></h2>
+    <ul class="tags"><li>SQL</li><li>Python</li><li>API-data-extractie</li><li>Informatica PowerCenter</li><li>Azure</li><li>dbt</li></ul>
     <p class="noot">En meer.</p>
   </section>
 
-  <section class="apps" aria-labelledby="apps">
-    <h2 id="apps">Apps en tools</h2>
-    <div class="app">
-      <div><span class="app-naam">MediRust</span> <span class="app-wat">· medicijnherinneringen voor ouderen</span></div>
-      <a href="https://medirust.nl">medirust.nl</a>
-    </div>
-    <div class="app">
-      <div><span class="app-naam">EnergieVriend</span> <span class="app-wat">· onafhankelijk energieplan voor je huis</span></div>
-      <a href="https://energievriend.nl">energievriend.nl</a>
-    </div>
-    <div class="app">
-      <div><span class="app-naam">EnergieVriend Pro</span> <span class="app-wat">· rekenhulp voor energieadviseurs en VvE's</span></div>
-      <a href="https://pro.energievriend.nl">pro.energievriend.nl</a>
-    </div>
-  </section>
-
-  <section class="contact" aria-labelledby="contact">
-    <h2 id="contact">Contact</h2>
+  <section class="groep apps">
+    <h2>Apps en tools</h2>
+    <ul class="applijst">
+      <li><a href="https://medirust.nl"><span class="app-naam">MediRust</span><span class="app-wat">medicijnherinneringen voor ouderen</span><span class="app-url">medirust.nl ↗</span></a></li>
+      <li><a href="https://energievriend.nl"><span class="app-naam">EnergieVriend</span><span class="app-wat">onafhankelijk energieplan voor je huis</span><span class="app-url">energievriend.nl ↗</span></a></li>
+      <li><a href="https://pro.energievriend.nl"><span class="app-naam">EnergieVriend Pro</span><span class="app-wat">rekenhulp voor energieadviseurs en VvE's</span><span class="app-url">pro.energievriend.nl ↗</span></a></li>
+    </ul>
+    <h2>Contact</h2>
     <a class="mail" href="mailto:contact@vdlintelligence.nl">contact@vdlintelligence.nl</a>
+    <footer>VDLIntelligence · KvK 66394597</footer>
   </section>
-
-  <footer>VDLIntelligence · KvK 66394597</footer>
-</main>
-</body>
-</html>
+</main></body></html>
