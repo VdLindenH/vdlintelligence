@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
 <style>
-  /* Layout: twee groepen los op een foto (CC0, Daderot, Wikimedia Commons); rol linksboven, apps en contact rechtsonder. */
+  /* Layout: twee groepen los op een foto (CC0, Daderot, Wikimedia Commons); rol linksboven, apps rechtsonder, contact onderaan in het midden. */
   :root { --ink:#ffffff; --zacht:rgba(255,255,255,.82); --accent:#8fe0e6; --lijn:rgba(255,255,255,.28);
     --tag:rgba(255,255,255,.16); --waas1:rgba(6,18,26,.3); --waas2:rgba(6,18,26,.12); --glas:transparent;
     --kop:"Space Grotesk","IBM Plex Sans","Segoe UI",system-ui,sans-serif; --sans:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
@@ -19,10 +19,12 @@
   body::before { content:""; position:fixed; top:0; left:0; right:0; height:100vh; height:100lvh; z-index:-1;
     background: radial-gradient(ellipse at 0% 0%, var(--waas1), transparent 60%), radial-gradient(ellipse at 100% 100%, var(--waas1), transparent 60%),
       linear-gradient(var(--waas2),var(--waas2)), url("img/achtergrond.webp") center / cover no-repeat, #0d1a21; }
-  .pagina { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr;
+  .pagina { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr auto;
     gap:2.5rem; padding-block:clamp(28px,6vh,72px); padding-inline:max(20px,5vw); }
   .rol { grid-column:1; grid-row:1; align-self:start; max-width:34rem; }
   .apps { grid-column:2; grid-row:1; align-self:end; justify-self:end; max-width:30rem; width:100%; }
+  .contact { grid-column:1 / -1; grid-row:2; justify-self:center; justify-items:center; text-align:center; }
+  .contact h2 { margin-top:0; }
   .groep { display:grid; gap:.9rem; align-content:start; padding:0; border-radius:16px; background:var(--glas);
      }
   .merk { font-family:var(--mono); font-size:.875rem; letter-spacing:.06em; color:var(--accent); }
@@ -47,11 +49,11 @@
   .mail { font-family:var(--mono); color:var(--accent); text-decoration:none; overflow-wrap:anywhere; }
   .mail:hover { text-decoration:underline; }
   a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:2px; }
-  footer { margin-top:1rem; font-family:var(--mono); font-size:.75rem; color:var(--zacht); }
+  footer { margin-top:.25rem; font-family:var(--mono); font-size:.75rem; color:var(--zacht); }
   .fotobron a { color:inherit; }
   @media (max-width: 860px) {
     .pagina { grid-template-columns:1fr; grid-template-rows:auto; }
-    .rol, .apps { grid-column:1; grid-row:auto; justify-self:stretch; max-width:none; }
+    .rol, .apps, .contact { grid-column:1; grid-row:auto; justify-self:stretch; max-width:none; }
     .app-url { grid-column:1; grid-row:auto; }
     :root { --waas2:rgba(6,18,26,.38); }
   }
@@ -60,7 +62,7 @@
     <div class="merk">VDLIntelligence</div>
     <h1>Senior Data Engineer</h1>
     <p class="ondertitel">Van inzicht naar resultaat</p>
-    <p class="intro">Ruime ervaring in dataontwikkeling, opgedaan in uiteenlopende opdrachten. Met een praktische aanpak vertaal ik complexe vraagstukken naar betrouwbare oplossingen die werken.</p>
+    <p class="intro">Ruime ervaring in dataontwikkeling, opgedaan in uiteenlopende opdrachten. Met een praktische aanpak bouw ik koppelingen en datastromen die betrouwbaar werken: van ruwe data tot een bruikbaar resultaat.</p>
     <div class="flow" aria-label="Extract, transform, load"><span>extract</span><span aria-hidden="true">→</span><span>transform</span><span aria-hidden="true">→</span><span>load</span></div>
     <h2>Skills <span class="klein">o.a.</span></h2>
     <ul class="tags"><li>SQL</li><li>Python</li><li>API-data-extractie</li><li>Informatica PowerCenter</li><li>Azure</li><li>dbt</li></ul>
@@ -74,8 +76,11 @@
       <li><a href="https://energievriend.nl"><span class="app-naam">EnergieVriend</span><span class="app-wat">onafhankelijk energieplan voor je huis</span><span class="app-url">energievriend.nl ↗</span></a></li>
       <li><a href="https://energievriend.nl/adviseurs"><span class="app-naam">EnergieVriend Pro</span><span class="app-wat">rekenhulp voor energieadviseurs en -coaches: woningen, VvE's en bedrijfsdaken</span><span class="app-url">energievriend.nl/adviseurs ↗</span></a></li>
     </ul>
+  </section>
+
+  <section class="groep contact">
     <h2>Contact</h2>
     <a class="mail" href="mailto:contact@vdlintelligence.nl">contact@vdlintelligence.nl</a>
-    <footer>VDLIntelligence · KvK 66394597</footer>
+    <footer>VDLIntelligence | KvK 66394597</footer>
   </section>
 </main></body></html>
