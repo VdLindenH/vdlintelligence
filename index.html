@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VDLIntelligence</title>
-<meta name="description" content="VDLIntelligence: Senior Data Engineer. SQL, Python, API-data-extractie, Informatica PowerCenter, Azure, dbt.">
+<meta name="description" content="VDLIntelligence: data-engineering, apps en webapps. Eigen apps en webapps, AI-toepassingen en data-integratie.">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap">
 <style>
   /* Layout: twee groepen los op een foto (CC0, Daderot, Wikimedia Commons); rol linksboven, apps rechtsonder, contact onderaan in het midden. */
   :root { --ink:#ffffff; --zacht:rgba(255,255,255,.82); --accent:#8fe0e6; --lijn:rgba(255,255,255,.28);
@@ -33,7 +33,7 @@
   .merk { display:flex; align-items:center; gap:.6rem; font-family:var(--kop); font-size:clamp(1.375rem,2vw,1.5625rem); letter-spacing:-.01em; color:var(--ink); }
   .merk b { font-weight:700; color:var(--ink); } .merk span span { font-weight:500; color:var(--accent); }
   .logo-tegel { width:1.6em; height:1.6em; flex:none; filter:drop-shadow(0 2px 8px rgba(0,0,0,.35)); }
-  h1 { margin:0; font-family:var(--kop); font-weight:600; font-size:clamp(1.125rem,1.6vw,1.25rem); line-height:1.2; letter-spacing:-.02em; text-wrap:balance; }
+  h1 { margin:0; font-family:var(--kop); font-weight:400; font-size:clamp(1.09375rem,1.5vw,1.1875rem); line-height:1.2; letter-spacing:-.02em; text-wrap:balance; }
   .ondertitel { margin:0; font-family:var(--kop); font-weight:500; font-size:1.0625rem; color:var(--accent); }
   .intro { margin:0; max-width:52ch; color:var(--zacht); }
   h2 { margin:1rem 0 0; font-family:var(--mono); font-weight:500; font-size:.8125rem; text-transform:uppercase; letter-spacing:.12em; color:var(--zacht); }
@@ -41,6 +41,11 @@
   .tags li { font-family:var(--mono); font-size:.9375rem; padding:.3rem .75rem; border-radius:999px; background:var(--tag); border:1px solid var(--lijn); text-shadow:none;
     -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); }
   .noot { margin:0; font-size:.9375rem; color:var(--zacht); }
+  /* Expertise: groepsnaam boven kleine pilletjes */
+  .expertise { display:grid; gap:.55rem; }
+  .expertise h3 { margin:0 0 .3rem; font-family:var(--kop); font-weight:500; font-size:.875rem; color:var(--accent); }
+  .expertise .tags { gap:.3rem; }
+  .expertise .tags li { font-size:.78rem; padding:.1rem .55rem; }
   .applijst { list-style:none; margin:0; padding:0; display:grid; }
   .applijst a { display:grid; grid-template-columns:1fr auto; gap:0 1rem; padding:.55rem 0; border-top:1px solid var(--lijn); color:inherit; text-decoration:none; line-height:1.45; }
   .applijst li:last-child a { border-bottom:1px solid var(--lijn); }
@@ -62,11 +67,16 @@
 </style></head><body><main class="pagina">
   <section class="groep rol">
     <div class="merk"><svg class="logo-tegel" viewBox="0 6 52 52" aria-hidden="true"><defs><linearGradient id="tB2_raster" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f6f7a"/><stop offset="1" stop-color="#25aab4"/></linearGradient></defs><rect x="0" y="6" width="52" height="52" rx="12" fill="url(#tB2_raster)"/><rect x="9.0" y="15.0" width="9.5" height="9.5" rx="2" fill="rgba(255,255,255,.28)"/><rect x="21.5" y="15.0" width="9.5" height="9.5" rx="2" fill="rgba(255,255,255,.28)"/><rect x="34.0" y="15.0" width="9.5" height="9.5" rx="2" fill="#ffffff"/><rect x="9.0" y="27.5" width="9.5" height="9.5" rx="2" fill="rgba(255,255,255,.28)"/><rect x="21.5" y="27.5" width="9.5" height="9.5" rx="2" fill="#ffffff"/><rect x="34.0" y="27.5" width="9.5" height="9.5" rx="2" fill="rgba(255,255,255,.28)"/><rect x="9.0" y="40.0" width="9.5" height="9.5" rx="2" fill="#ffffff"/><rect x="21.5" y="40.0" width="9.5" height="9.5" rx="2" fill="rgba(255,255,255,.28)"/><rect x="34.0" y="40.0" width="9.5" height="9.5" rx="2" fill="rgba(255,255,255,.28)"/></svg><span><b>VDL</b><span>Intelligence</span></span></div>
-    <h1>Senior Data Engineer</h1>
-    <p class="ondertitel">Van bron naar inzicht</p>
-    <p class="intro">Ruime ervaring in data-integratie, opgedaan in uiteenlopende opdrachten bij bedrijven en organisaties. Met een praktische aanpak bouw ik koppelingen en datastromen die betrouwbaar werken: van ruwe data tot een bruikbaar resultaat.</p>
+    <h1>Data-engineering, apps en webapps</h1>
+    <p class="ondertitel">Van vraag tot praktisch resultaat</p>
+    <p class="intro">Zelfstandig bouw ik apps en webapps, van eerste idee tot werkend product. Daarbij maak ik ook AI-toepassingen die met eigen documenten en gegevens werken. Mijn basis is ruime ervaring als data-engineer, eerst in loondienst en later als zelfstandige: koppelingen en datastromen die betrouwbaar en efficiënt werken.</p>
+    <p class="intro">Is er een idee voor een app of webapp?<br>Laat het me weten, dan bouw ik die graag in opdracht.</p>
     <h2>Expertise</h2>
-    <ul class="tags"><li>SQL</li><li>Python</li><li>API-data-extractie</li><li>Informatica PowerCenter</li><li>Azure</li><li>dbt</li></ul>
+    <div class="expertise">
+      <div><h3>Data</h3><ul class="tags"><li>SQL</li><li>Python</li><li>API-data-extractie</li><li>Informatica PowerCenter</li><li>Azure</li><li>dbt</li></ul></div>
+      <div><h3>Apps en webapps</h3><ul class="tags"><li>Webapps</li><li>Android-apps</li><li>Betalen en accounts</li><li>Hosting in de cloud</li></ul></div>
+      <div><h3>AI</h3><ul class="tags"><li>LLM-toepassingen</li><li>LangGraph</li><li>Vectordatabases</li><li>RAG</li></ul></div>
+    </div>
     <p class="noot">En meer.</p>
   </section>
 
@@ -76,7 +86,7 @@
       <li><a href="https://medirust.nl"><span class="app-naam">MediRust</span><span class="app-wat">medicijnherinneringen voor ouderen</span><span class="app-url">medirust.nl ↗</span></a></li>
       <li><a href="https://energievriend.nl"><span class="app-naam">EnergieVriend</span><span class="app-wat">onafhankelijk energieplan voor je huis</span><span class="app-url">energievriend.nl ↗</span></a></li>
       <li><a href="https://energievriend.nl/adviseurs"><span class="app-naam">EnergieVriend Pro</span><span class="app-wat">rekenhulp voor energieadviseurs en&nbsp;‑coaches: woningen, VvE's en bedrijfsdaken</span><span class="app-url">energievriend.nl/adviseurs ↗</span></a></li>
-      <li><a href="https://specsmapper.com/nl/"><span class="app-naam">SpecsMapper</span><span class="app-wat">pdf-datasheets omzetten naar ETIM-productdata voor groothandels</span><span class="app-url">specsmapper.com ↗</span></a></li>
+      <li><a href="https://specsmapper.com/nl/"><span class="app-naam">SpecsMapper</span><span class="app-wat">internationale webapp die pdf-datasheets omzet naar ETIM-productdata, voor fabrikanten en importeurs</span><span class="app-url">specsmapper.com ↗</span></a></li>
     </ul>
   </section>
 
